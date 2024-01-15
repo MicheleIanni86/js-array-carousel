@@ -1,0 +1,58 @@
+
+.wrapper {
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+.carousel-container {
+    width: 1000px;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 30px;
+}
+
+
+
+.arrow-next {
+    position: absolute;
+    top: 10px;
+    right: 50%;
+    transform: translatex(50%);
+    cursor: pointer;
+}
+
+.arrow-prev {
+    position: absolute;
+    bottom : 10px;
+    right: 50%;
+    transform: translatex(50%);
+    cursor: pointer;
+}
+
+.slides-container {
+    height: 100%;
+}
+
+.slide {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.spider {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}
+
+.boxArrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    opacity:0.8;
+}
