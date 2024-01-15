@@ -42,7 +42,12 @@ arrowNextButton.addEventListener('click', function () {
     const currentPhoto = document.querySelector('.slide.attiva');
     currentPhoto.classList.remove('attiva');
 
-    photoView++;
+
+    if (photoView >= slides.length - 1) {
+        photoView = 0;
+    } else {
+        photoView++;
+    }
 
     // metti
     const otherPhoto = document.getElementsByClassName('slide');
@@ -53,6 +58,19 @@ arrowNextButton.addEventListener('click', function () {
 
 // Bottone prev
 arrowPrevButton.addEventListener('click', function () {
+    // togli
+    const currentPhoto = document.querySelector('.slide.attiva');
+    currentPhoto.classList.remove('attiva');
 
 
+    if (photoView <= 0) {
+        photoView = slides.length - 1;
+    } else {
+        photoView--;
+    }
+
+    // metti
+    const otherPhoto = document.getElementsByClassName('slide');
+    const newPhoto = otherPhoto[photoView];
+    newPhoto.classList.add('attiva');
 });
