@@ -1,4 +1,4 @@
-console.log('ok');
+
 // HTML
 const slideContainerElement = document.getElementById('slideContainer');
 const arrowNextButton = document.querySelector('.arrow-next');
@@ -7,11 +7,13 @@ const arrowPrevButton = document.querySelector('.arrow-prev');
 
 
 // creo array delle immagini
-const slides = ['01.webp', '02.webp', '03.webp', '04.webp', '05.webp'];
+let slides = ['01.webp', '02.webp', '03.webp', '04.webp', '05.webp'];
 
 
 // immagine che mostro
 let photoView = 0;
+
+
 
 // genero Html
 let immaginiHtml = '';
@@ -30,13 +32,36 @@ for (let i = 0; i < slides.length; i++) {
 
     // genero posto dove mettere in Html
     immaginiHtml += `<img src="./img/${slide}" alt="" class="slide ${attivaClass}"/>`;
-
-
 }
 
-// slideContainerElement.innerHTML = immaginiHtml;
+// AUTOSCROLL PHOTO
+let scroll = setInterval(function () {
+    // togli
+    const currentPhoto = document.querySelector('.slide.attiva');
+    currentPhoto.classList.remove('attiva');
 
-// Bottone next
+
+    if (photoView >= slides.length - 1) {
+        photoView = 0;
+    } else {
+        photoView++;
+    }
+
+    // metti
+
+    const otherPhoto = document.getElementsByClassName('slide');
+    const newPhoto = otherPhoto[photoView];
+    newPhoto.classList.add('attiva');
+}, 3000);
+
+let stopScroll = clearInterval(function () {
+
+});
+
+
+
+
+// BOTTONE NEXT
 arrowNextButton.addEventListener('click', function () {
     // togli
     const currentPhoto = document.querySelector('.slide.attiva');
@@ -56,7 +81,7 @@ arrowNextButton.addEventListener('click', function () {
 });
 
 
-// Bottone prev
+// BOTTONE PREV
 arrowPrevButton.addEventListener('click', function () {
     // togli
     const currentPhoto = document.querySelector('.slide.attiva');
