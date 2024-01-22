@@ -34,7 +34,7 @@ for (let i = 0; i < slides.length; i++) {
     immaginiHtml += `<img src="./img/${slide}" alt="" class="slide ${attivaClass}"/>`;
 }
 
-// AUTOSCROLL PHOTO
+// AUTOSCROLL PHOTO -----------------------------------------------------------------------------------------------
 let scroll = setInterval(function () {
     // togli
     const currentPhoto = document.querySelector('.slide.attiva');
@@ -46,17 +46,40 @@ let scroll = setInterval(function () {
     } else {
         photoView++;
     }
-
     // metti
-
     const otherPhoto = document.getElementsByClassName('slide');
     const newPhoto = otherPhoto[photoView];
     newPhoto.classList.add('attiva');
-}, 3000);
+}, 1000);
 
-let stopScroll = clearInterval(function () {
+// EVENTO SUL MOUSEOVER--------------------------------------------------------------------------------------------
+slideContainerElement.addEventListener('mouseover', function () {
 
+    clearInterval(scroll);
 });
+
+// EVENTO SUL MOUSE OUT----------------------------------------------------------------------------------------------
+slideContainerElement.addEventListener('mouseout', function () {
+    scroll = setInterval(function () {
+        // togli
+        const currentPhoto = document.querySelector('.slide.attiva');
+        currentPhoto.classList.remove('attiva');
+
+        if (photoView >= slides.length - 1) {
+            photoView = 0;
+        } else {
+            photoView++;
+        }
+
+        // metti
+        const otherPhoto = document.getElementsByClassName('slide');
+        const newPhoto = otherPhoto[photoView];
+        newPhoto.classList.add('attiva');
+    }, 1000);
+});
+
+
+
 
 
 

@@ -15,10 +15,12 @@
     position: relative;
     border-radius: 30px;
     box-shadow: 5px 10px 18px rgb(64, 39, 39);
+    
 }
 
 .slide-container {
     height: 100%;
+    
 }
 
 .slide {
